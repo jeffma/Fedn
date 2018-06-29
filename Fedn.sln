@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Fedn", "Fedn\Fedn.fsproj", "{2E9F6FC8-03F9-4B66-84FE-0C85A627ADEE}"
+EndProject
+Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "FednTest", "FednTest\FednTest.fsproj", "{D7F98C3F-EF1A-41D8-ACD2-283B04601492}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E9F6FC8-03F9-4B66-84FE-0C85A627ADEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E9F6FC8-03F9-4B66-84FE-0C85A627ADEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E9F6FC8-03F9-4B66-84FE-0C85A627ADEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E9F6FC8-03F9-4B66-84FE-0C85A627ADEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7F98C3F-EF1A-41D8-ACD2-283B04601492}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7F98C3F-EF1A-41D8-ACD2-283B04601492}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7F98C3F-EF1A-41D8-ACD2-283B04601492}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7F98C3F-EF1A-41D8-ACD2-283B04601492}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
