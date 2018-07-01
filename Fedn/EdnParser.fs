@@ -49,7 +49,7 @@ module EdnParser =
                 (pstring "newline" <|> pstring "return" <|> pstring "space" 
                       <|> pstring "tab" <|> (manyChars (noneOf " \r\t\n")) 
                 |>> fun s ->
-                  match s with
+                    match s with
                     | "newline" -> EdnCharacter('\n')
                     | "return" -> EdnCharacter('\r')
                     | "space" -> EdnCharacter(' ')
@@ -150,7 +150,6 @@ module EdnParser =
     let internal parseDiscard =
         pstring "#_" >>.
         ednValue |>> fun (value) -> EdnDiscard(value)
-        .>>(lookAhead eof <|> lookAhead (delimiter |>> ignore))
         .>> skipWhiteSpace
 
 
@@ -218,6 +217,16 @@ module EdnParser =
        static member FromString str = 
            run (skipWhiteSpace >>. many1 ednValue) str |> getValueFromResult 
     
+       static member FromStream stream = 
+            runParserOnStream (skipWhiteSpace >>. many1 ednValue) () "ednStream" stream System.Text.Encoding.UTF8 |> getValueFromResult
 
+       static member FromFile fileName = 
+            runParserOnFile (skipWhiteSpace >>. many1 ednValue) () fileName System.Text.Encoding.UTF8 |> getValueFromResult 
+
+       static member FromDirectory dir  = 
+           let searchPattern = @"*.edn"
+           let testFiles = Directory.GetFiles(dir, searchPattern, SearchOption.AllDirectories)
+           let results = [for f in testFiles do yield! EDNParserFuncs.FromFile f]
+           results
 
 

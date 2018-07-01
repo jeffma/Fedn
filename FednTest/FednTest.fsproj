@@ -21,4 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Fedn\Fedn.fsproj" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\*.edn" />
+  </ItemGroup>
 </Project>
