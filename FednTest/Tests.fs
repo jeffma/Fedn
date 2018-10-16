@@ -88,7 +88,7 @@ let ``EdnFloat From String case4`` () =
     let result = EDNParserFuncs.FromString " 0.123 "
     let firstItem = List.item 0 result
     match firstItem with
-    | EdnFloat(n) when n=0.123 -> Assert.True(true,"first item is edn float 0.123")
+    | EdnFloat(n) when n=Decimal(0.123) -> Assert.True(true,"first item is edn float 0.123")
     | _ -> Assert.False(true,"fifth item is not edn float")   
 
 [<Fact>]
@@ -96,8 +96,16 @@ let ``EdnFloat From String case5`` () =
     let result = EDNParserFuncs.FromString " .123 "
     let firstItem = List.item 0 result
     match firstItem with
-    | EdnFloat(n) when n=0.123 -> Assert.True(true,"first item is edn float .123")
-    | _ -> Assert.False(true,"fifth item is not edn float")              
+    | EdnFloat(n) when n=Decimal(0.123) -> Assert.True(true,"first item is edn float .123")
+    | _ -> Assert.False(true,"fifth item is not edn float")  
+
+[<Fact>]
+let ``EdnFloat From String case6`` () =
+    let result = EDNParserFuncs.FromString "-123.456E-18"
+    let firstItem = List.item 0 result
+    match firstItem with
+    | EdnFloat(n) when n=Decimal.Parse("-123.456E-18") -> Assert.True(true,"first item is edn float .123")
+    | _ -> Assert.False(true,"fifth item is not edn float")            
 
 [<Fact>]
 let ``EdnSymbol From String case1`` () =

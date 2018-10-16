@@ -3,6 +3,7 @@
 module EdnParser =
     open System.IO
     open System.Numerics
+    open System
     open FParsec
     open Fedn.EdnType
 
@@ -69,7 +70,7 @@ module EdnParser =
             numberLiteral numberFormat "number"
             |>> fun nl ->
                     if nl.IsInteger then EdnInteger(BigInteger.Parse nl.String)
-                    else EdnFloat(float nl.String)
+                    else EdnFloat(Decimal.Parse nl.String)
             .>>(lookAhead eof <|> lookAhead (delimiter |>> ignore))       
             .>> skipWhiteSpace)
             

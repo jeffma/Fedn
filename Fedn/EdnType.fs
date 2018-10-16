@@ -16,7 +16,7 @@ module EdnType =
                     | EdnSymbol of QualifiedSymbol
                     | EdnKeyword of QualifiedSymbol
                     | EdnInteger of BigInteger
-                    | EdnFloat of double
+                    | EdnFloat of decimal
                     | EdnComment of string
                     | EdnDiscard of EdnValue
                     | EdnTaggedValue of QualifiedSymbol * EdnValue
