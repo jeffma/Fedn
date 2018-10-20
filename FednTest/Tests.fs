@@ -101,10 +101,10 @@ let ``EdnFloat From String case5`` () =
 
 [<Fact>]
 let ``EdnFloat From String case6`` () =
-    let result = EDNParserFuncs.FromString "-123.456E-18"
+    let result = EDNParserFuncs.FromString "-123.456e+2"
     let firstItem = List.item 0 result
     match firstItem with
-    | EdnFloat(n) when n=Decimal.Parse("-123.456E-18") -> Assert.True(true,"first item is edn float .123")
+    | EdnFloat(n) when n=Decimal.Parse("-123.456e+2", System.Globalization.NumberStyles.Float ||| System.Globalization.NumberStyles.AllowTrailingSign) -> Assert.True(true,"first item is edn float 1.87E+02")
     | _ -> Assert.False(true,"fifth item is not edn float")            
 
 [<Fact>]

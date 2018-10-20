@@ -70,7 +70,7 @@ module EdnParser =
             numberLiteral numberFormat "number"
             |>> fun nl ->
                     if nl.IsInteger then EdnInteger(BigInteger.Parse nl.String)
-                    else EdnFloat(Decimal.Parse nl.String)
+                    else EdnFloat(Decimal.Parse(nl.String,System.Globalization.NumberStyles.Float ||| System.Globalization.NumberStyles.AllowTrailingSign))
             .>>(lookAhead eof <|> lookAhead (delimiter |>> ignore))       
             .>> skipWhiteSpace)
             
